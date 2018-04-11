@@ -1,0 +1,5 @@
+test.py
+*.pyc
+*.vscode
+Pipfile
+Pipfile.lock

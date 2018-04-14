@@ -1,3 +1,4 @@
 from app_client import AppClient
-from resources import Resources
-from bookings import Bookings
+from resource import Resource
+from booking import Booking
+from availability import Availability

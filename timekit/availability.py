@@ -1,12 +1,12 @@
 from api_client import ApiClient
-from to_rfc3339 import to_rfc3339
+
 
 class Availability:
 
     def __init__(self, api_key):
         self.base = 'findtime'
         self.api_client = ApiClient(api_key)
-    
+
     def query(self, resource_ids, **kwargs):
         """
         Required
@@ -31,11 +31,5 @@ class Availability:
 
         if type(resource_ids) == str:
             data['resource_ids'] = [resource_ids]
-                    
+
         return self.api_client.call_api('post', self.base, data)
-
-
-
-
-
-        

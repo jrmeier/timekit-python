@@ -1,6 +1,7 @@
 # coding: utf-8
 from api_client import ApiClient
 
+
 class AppClient:
 
     def __init__(self, api_key):
@@ -13,12 +14,12 @@ class AppClient:
         """
 
         return self.api_client.call_api('get', self.base)
-    
+
     def invite_resources(self, email):
         """
         required
         :param email: string, email address to invite
-        
+
         returns: the new resource object
         """
         url = self.base + '/invite'

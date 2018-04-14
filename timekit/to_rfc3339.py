@@ -1,7 +1,8 @@
-import datetime
 from math import floor
 
-#since we are on python 2.7, we need this :(
+# since we are on python 2.7, we need this :(
+
+
 def to_rfc3339(datetime_obj):
     datetime_phrase = datetime_obj.strftime('%Y-%m-%dT%H:%M:%S')
     us = datetime_obj.strftime('%f')

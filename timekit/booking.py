@@ -1,9 +1,7 @@
 # coding: utf-8
 
 from api_client import ApiClient
-from tzlocal import get_localzone
 from to_rfc3339 import to_rfc3339
-import requests
 
 
 class Booking:
@@ -16,7 +14,7 @@ class Booking:
         """
         :query params
         :params includes: include booking attribute such as event_info in response
-        
+
         :body params
         required
         :param resource_id: string, id of the resource being booked
@@ -48,15 +46,15 @@ class Booking:
 
         if 'graph' not in kwargs.keys():
             data['graph'] = 'confirm_decline'
-        
+
         if 'settings' in kwargs.keys():
             data['settings'] = {'allow_double_bookings': kwargs['settings']}
-        
+
         if 'action' not in kwargs.keys():
-            data['action'] = 'create' 
+            data['action'] = 'create'
         data['start'] = to_rfc3339(data['start'])
         data['end'] = to_rfc3339(data['end'])
-        
+
         return self.api_client.call_api('post', self.base, data)
 
     def list(self, **kwargs):
@@ -74,28 +72,28 @@ class Booking:
         data = kwargs
         if 'start' in kwargs:
             data['start'] = to_rfc3339(data['start'])
-        
+
         if 'end' in kwargs:
             data['end'] = to_rfc3339(data['end'])
 
         url = "?search="
         for key in data:
-            url += key +':'+data[key] +'&'
-        
+            url += key + ':'+data[key] + '&'
+
         url = url[:-1]
-        
+
         return self.api_client.call_api('get', url=url)
 
     def retrieve(self, booking_id, includes=[]):
         """
         required
         :params booking_id: string
-        
+
         optional
         :param includes: array of strings of dynamic includes
-        
+
         returns
-        object of booking_id 
+        object of booking_id
         """
 
         url = self.base + '/' + booking_id
@@ -108,9 +106,9 @@ class Booking:
 
         returns: object of the booking confirmed
         """
-        
+
         return self._update_state(booking_id, 'confirm')
-    
+
     def decline(self, booking_id):
         """
         required
@@ -120,7 +118,7 @@ class Booking:
         """
 
         return self._update_state(booking_id, 'decline')
-    
+
     def cancel(self, booking_id):
         """
         required
@@ -130,7 +128,7 @@ class Booking:
         """
 
         return self._update_state(booking_id, 'cancel')
-    
+
     def _update_state(self, booking_id, action):
         """
         required
@@ -140,8 +138,3 @@ class Booking:
         url = self.base + '/' + booking_id + '/' + action
 
         return self.api_client.call_api('put', url=url)
-
-
-        
-        
-

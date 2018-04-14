@@ -9,17 +9,16 @@ class Resource:
     def __init__(self, api_key):
         self.base = "resources"
         self.api_client = ApiClient(api_key)
-    
+
     def list(self):
         """
         returns an object of resources
         """
         return self.api_client.call_api('get', self.base)
-    
-    def create(self, name, timezone=None, email=None, first_name=None, last_name=None,
-        password=None, tags=[]
-        ):
 
+    def create(self, name, timezone=None, email=None, first_name=None, last_name=None,
+               password=None, tags=[]
+               ):
         """
         required
         :param name: string, name of the resource
@@ -42,7 +41,7 @@ class Resource:
         }
         if email:
             data['email'] = email
-        
+
         if first_name:
             data['first_name'] = first_name
 
@@ -58,7 +57,7 @@ class Resource:
         #     return req.json()
         # else:
         #     return req
-    
+
     def retrieve(self, resource_id):
         """
         :param resource_id: id of resource
@@ -66,8 +65,8 @@ class Resource:
         returns the resource object
         """
         url = self.base + '/' + str(resource_id)
-        return self.api_client.call_api('get',url)
-    
+        return self.api_client.call_api('get', url)
+
     def update(self, resource_id, **kwargs):
         """
         required
@@ -85,13 +84,12 @@ class Resource:
 
         data = kwargs
         data['id'] = str(resource_id)
-        
+
         if len(data) <= 1:
             return False
 
         return self.api_client.call_api('put', url, kwargs)
 
-    
     def delete(self, id):
         url = self.base + '/' + str(id)
 

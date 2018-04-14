@@ -8,13 +8,14 @@ Many features are still missing, feel free to submit a pull request and add what
  * Booking Graphs
  * Calendars
  * Events
+ * Booking actions in Bulk
 
 ## Requirements
 Python 2.7 or higher, this was written with 2.7 and not tested with anything else 
 AppToken from Timekit
 
 ## Installation
-Since this isn't hosted on PyPy yet, clone this repo (git@github.com:jrmeier/timekit-python.git)[git@github.com:jrmeier/timekit-python.git].
+Since this isn't hosted on PyPy yet, clone this [repo](git@github.com:jrmeier/timekit-python.git).
 
 Step 1.
 
@@ -115,12 +116,27 @@ retrieved_booking = client.retrieve(booking_id)
 # returns the confirmed booking object
 client.confirm(booking_id)
 
-# returns the declined bookign object
+# returns the declined bookign objectå
 client.decline(booking_id)
 
 # returns the canceled booking object
 client.cancel(booking_id)
 ```
+
+## Availability
+
+ ```python
+ from timekit import Availability
+
+app_token = "YOUR_APP_TOKEN"
+
+client = Availability(app_token)
+
+# check for open times
+# there's a lot of options, so check the documentaion
+resource_id = "RESOURCE_ID"
+
+client.query(resource_id)
 
 
 

@@ -31,10 +31,8 @@ class Availability:
 
         if type(resource_ids) == str:
             data['resource_ids'] = [resource_ids]
-        
-
-            
-        return self.api_client.call_api('post',self.base, data)
+                    
+        return self.api_client.call_api('post', self.base, data)
 
 
 

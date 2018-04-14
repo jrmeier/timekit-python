@@ -168,7 +168,7 @@ app_token = 'YOUR_APP_TOKEN'
 client = Credentials(app_token)
 
 # create a calendar
-resource_id = "RESOURCE_ID"
+resource_id = 'RESOURCE_ID'
 name = 'Test Calendar Name'
 description = 'Test calendar description'
 client.create(resource_id=resource_id, name=name, description=description)
@@ -177,13 +177,13 @@ client.create(resource_id=resource_id, name=name, description=description)
 client.list()
 
 # get calendar by ID
-client.retrieve("CALENDAR_ID")
+client.retrieve('CALENDAR_ID')
 
 # update calendar by ID
-client.update("CALEDAR_ID", name='My new calendar name')
+client.update('CALEDAR_ID', name='My new calendar name')
 
 # delete a calendar
-client.delete("CALENDAR_ID")
+client.delete('CALENDAR_ID')
 ```
 
 ## Event
@@ -202,10 +202,18 @@ res = client.create(
     start = start_time,
     end = end_time,
     what = 'This is a great time',
-    where = 'Your mom\'s house',
+    where = 'Your house',
     calendar_id=calendar_id,
-    resource_id="RESOURCE_ID"
+    resource_id='RESOURCE_ID'
 )
 
 # list all events
 client.list()
+
+
+# CURRENTLY NOT WORKING
+# update an event
+client.update('EVENT_ID', what='a new and improved what')
+
+# delete an event
+client.delete('EVENT_ID')

@@ -35,8 +35,11 @@ class ApiClient:
             if data:
                 req = requests.get(url, headers=self.headers,
                                    auth=self.auth, params=data)
+                
             else:
                 req = requests.get(url, headers=self.headers, auth=self.auth)
+            
+            print req.request.url
             if req.status_code in range(200, 206):
                 return req.json()
             else:

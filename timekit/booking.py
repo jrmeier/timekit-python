@@ -7,8 +7,8 @@ from to_rfc3339 import to_rfc3339
 class Booking:
 
     def __init__(self, app_token):
-        self.api_client = ApiClient(app_token)
         self.base = 'bookings'
+        self.api_client = ApiClient(app_token, self.base)
 
     def create(self, *args, **kwargs):
         """
@@ -55,7 +55,7 @@ class Booking:
         data['start'] = to_rfc3339(data['start'])
         data['end'] = to_rfc3339(data['end'])
 
-        return self.api_client.call_api('post', self.base, data)
+        return self.api_client.call_api('post', data=data)
 
     def list(self, **kwargs):
         """
@@ -76,13 +76,7 @@ class Booking:
         if 'end' in kwargs:
             data['end'] = to_rfc3339(data['end'])
 
-        url = "?search="
-        for key in data:
-            url += key + ':'+data[key] + '&'
-
-        url = url[:-1]
-
-        return self.api_client.call_api('get', url=url)
+        return self.api_client.call_api('get', data=data)
 
     def retrieve(self, booking_id, includes=[]):
         """

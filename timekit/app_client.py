@@ -4,8 +4,8 @@ from api_client import ApiClient
 
 class AppClient:
 
-    def __init__(self, api_key):
-        self.api_client = ApiClient(api_key)
+    def __init__(self, app_token):
+        self.api_client = ApiClient(app_token)
         self.base = 'app'
 
     def get_current_app(self):

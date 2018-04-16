@@ -3,9 +3,9 @@ from api_client import ApiClient
 
 class Availability:
 
-    def __init__(self, api_key):
+    def __init__(self, app_token):
         self.base = 'findtime'
-        self.api_client = ApiClient(api_key)
+        self.api_client = ApiClient(app_token)
 
     def query(self, resource_ids, **kwargs):
         """

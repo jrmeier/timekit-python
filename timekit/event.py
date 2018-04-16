@@ -6,9 +6,9 @@ from to_rfc3339 import to_rfc3339
 
 class Event:
 
-    def __init__(self, api_key):
+    def __init__(self, app_token):
         self.base = 'events'
-        self.api_client = ApiClient(api_key, self.base)
+        self.api_client = ApiClient(app_token, self.base)
 
     def create(self, start, end, what, where, calendar_id, resource_id, **kwargs):
         """
@@ -58,7 +58,6 @@ class Event:
         if search:
             data['search'] = "?resource_id:"+search
 
-        print "data from list: ", data
         return self.api_client.call_api('get', data=data)
 
     def retrieve(self, event_id):

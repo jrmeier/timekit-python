@@ -6,8 +6,8 @@ from to_rfc3339 import to_rfc3339
 
 class Booking:
 
-    def __init__(self, api_key):
-        self.api_client = ApiClient(api_key)
+    def __init__(self, app_token):
+        self.api_client = ApiClient(app_token)
         self.base = 'bookings'
 
     def create(self, *args, **kwargs):

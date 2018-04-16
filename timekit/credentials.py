@@ -3,9 +3,9 @@ from api_client import ApiClient
 
 class Credentials:
 
-    def __init__(self, api_key):
+    def __init__(self, app_token):
         self.base = 'credentials'
-        self.api_client = ApiClient(api_key)
+        self.api_client = ApiClient(app_token)
 
     def widget(self):
         return self.api_client.call_api('get', url=self.base)

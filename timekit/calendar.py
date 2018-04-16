@@ -3,9 +3,9 @@ from api_client import ApiClient
 
 class Calendar:
 
-    def __init__(self, api_key):
+    def __init__(self, app_token):
         self.base = 'calendars'
-        self.api_client = ApiClient(api_key, self.base)
+        self.api_client = ApiClient(app_token, self.base)
 
     def create(self, resource_id, name, description, **kwargs):
         """

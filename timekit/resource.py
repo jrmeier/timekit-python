@@ -6,9 +6,9 @@ from tzlocal import get_localzone
 
 class Resource:
 
-    def __init__(self, api_key):
+    def __init__(self, app_token):
         self.base = "resources"
-        self.api_client = ApiClient(api_key)
+        self.api_client = ApiClient(app_token)
 
     def list(self):
         """
@@ -52,11 +52,6 @@ class Resource:
             data['password'] = password
 
         return self.api_client.call_api('post', self.base, data)
-        # req = requests.post(self.url, json=data, auth=self.auth)
-        # if req.status_code == 201:
-        #     return req.json()
-        # else:
-        #     return req
 
     def retrieve(self, resource_id):
         """

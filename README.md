@@ -5,9 +5,9 @@ Many features are still missing, feel free to submit a pull request and add what
 
 ## Missing Features
  * Dynamic Includes
- * Booking Graphs
- * Calendars
- * Events
+ * ~~Booking Graphs ~~
+ * ~~Calendars~~
+ * ~~Events~~
  * Booking actions in Bulk
 
 ## Requirements

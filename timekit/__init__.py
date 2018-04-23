@@ -5,3 +5,4 @@ from availability import Availability  # noqa: #401
 from credentials import Credentials  # noqa: #401
 from calendar import Calendar  # noqa: #401
 from event import Event  # noqa: #401
+from api_client import ApiClient  # noqa: #401

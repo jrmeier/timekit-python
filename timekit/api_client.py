@@ -1,7 +1,7 @@
 import requests
 
 
-class ApiClient:
+class ApiClient(object):
 
     def __init__(self, app_token, api_url=None):
         self.headers = {'Content-Type': 'application/json'}
@@ -21,31 +21,37 @@ class ApiClient:
 
         _type = _type.lower()
         if _type == 'post':
+            data['fakingit'] = 'what'
             req = requests.post(
                 url, json=data, headers=self.headers, auth=self.auth)
+
             if req.status_code in range(200, 206):
-                return req.json()
+                try:
+                    return req.json()
+                except ValueError:
+                    return True
             else:
                 raise ApiException(
-                    status = req.status_code,
-                    reason = req.content
+                    status=req.status_code,
+                    reason=req.content
                 )
 
         elif _type == 'get':
             if data:
                 req = requests.get(url, headers=self.headers,
                                    auth=self.auth, params=data)
-                
             else:
                 req = requests.get(url, headers=self.headers, auth=self.auth)
-            
-            print req.request.url
+
             if req.status_code in range(200, 206):
-                return req.json()
+                try:
+                    return req.json()
+                except ValueError:
+                    return True
             else:
                 raise ApiException(
-                    status = req.status_code,
-                    reason = req.content
+                    status=req.status_code,
+                    reason=req.content
                 )
         elif _type == 'put':
             req = requests.put(
@@ -55,8 +61,8 @@ class ApiClient:
                 return True
             else:
                 raise ApiException(
-                    status = req.status_code,
-                    reason = req.content
+                    status=req.status_code,
+                    reason=req.content
                 )
         elif _type == 'delete':
             req = requests.delete(
@@ -68,11 +74,12 @@ class ApiClient:
                 return True
             else:
                 raise ApiException(
-                    status = req.status_code,
-                    reason = req.content
+                    status=req.status_code,
+                    reason=req.content
                 )
         else:
             return None
+
 
 class ApiException(Exception):
 
@@ -89,7 +96,8 @@ class ApiException(Exception):
         error_message = "({0})\n"\
                         "Reason: {1}\n".format(self.status, self.reason)
         if self.headers:
-            error_message += "HTTP response headers: {0}\n".format(self.headers)
+            error_message += "HTTP response headers: {0}\n".format(
+                self.headers)
 
         if self.body:
             error_message += "HTTP response body: {0}\n".format(self.body)

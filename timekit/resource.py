@@ -68,7 +68,7 @@ class Resource:
         :param resource_id: id of the resource
 
         optional
-        :parem name: string
+        :param name: string
         :param first_name: string
         :param last_name: string
         :param password: string, if not set, a random password will be assigned

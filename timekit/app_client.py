@@ -5,15 +5,15 @@ from api_client import ApiClient
 class AppClient:
 
     def __init__(self, app_token):
-        self.api_client = ApiClient(app_token)
         self.base = 'app'
+        self.api_client = ApiClient(app_token, self.base)
 
     def get_current_app(self):
         """
         returns the application object
         """
 
-        return self.api_client.call_api('get', self.base)
+        return self.api_client.call_api('get')
 
     def invite_resources(self, email):
         """

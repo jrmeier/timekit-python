@@ -10,7 +10,7 @@ class Booking:
         self.base = 'bookings'
         self.api_client = ApiClient(app_token, self.base)
 
-    def create(self, *args, **kwargs):
+    def create(self, **kwargs):
         """
         :query params
         :params includes: include booking attribute such as event_info in response
@@ -39,10 +39,7 @@ class Booking:
         :param invite: boolean
         """
 
-        if kwargs:
-            data = kwargs
-        else:
-            data = args[0]
+        data = kwargs
 
         if 'graph' not in kwargs.keys():
             data['graph'] = 'confirm_decline'

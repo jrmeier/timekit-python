@@ -5,10 +5,8 @@ Many features are still missing, feel free to submit a pull request and add what
 
 ## Missing Features
  * Dynamic Includes
- * Booking Graphs
- * Calendars
- * Events
- * Booking actions in Bulk
+ * Bulk actions
+ * TESTS
 
 ## Requirements
 * Python 2.7 or higher, this was written with 2.7 and not tested with anything else 

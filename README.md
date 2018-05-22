@@ -10,7 +10,7 @@ Many features are still missing, feel free to submit a pull request and add what
 
 ## Requirements
 * Python 2.7 or higher, this was written with 2.7 and not tested with anything else 
-* AppToken from Timekit
+* App API Key from Timekit
 * [requests](http://docs.python-requests.org/en/master/) - v 2.18.4
 * tzlocal - v 1.5.1
 
@@ -39,8 +39,8 @@ Install the requirements
  ```python
  from timekit import Resource
 
-app_token = 'YOUR_APP_TOKEN'
-client = Resource(app_token)
+api_token = 'YOUR_API_TOKEN'
+client = Resource(api_token)
 
 # create a resource, returns the resource object with metadata
 # there are many attributes that can be added, see the offical documenation for more details
@@ -66,9 +66,9 @@ client.delete(resource_id)
  ```python
  from timekit import AppClient
 
-app_token = 'YOUR_APP_TOKEN'
+api_token = 'YOUR_APP_TOKEN'
 
-client = AppClient(app_token)
+client = AppClient(api_token)
 
 # get the current application info
 client.get_current_app()
@@ -83,7 +83,7 @@ client.invite_resources('joshm@null.net')
  from timekit import Booking
 import datetime
 
-app_token = 'YOUR_APP_TOKEN'
+api_token = 'YOUR_API_TOKEN'
 
 # setting this for my local UTC offset
 now = datetime.datetime.utcnow() + datetime.timedelta(hours=5)
@@ -103,7 +103,7 @@ booking_obj = {
 }
 
 # if successful, it will return a dictionary of the new booking!
-client = Booking(app_token)
+client = Booking(api_token)
 booking = client.create(booking_obj)
 
 # now we can retrieve that booking
@@ -130,9 +130,9 @@ client.cancel(booking_id)
  ```python
  from timekit import Availability
 
-app_token = 'YOUR_APP_TOKEN'
+api_token = 'YOUR_API_TOKEN'
 
-client = Availability(app_token)
+client = Availability(api_token)
 
 # check for open times
 # there's a lot of options, so check the documentaion
@@ -146,9 +146,9 @@ client.query(resource_id)
  ```python
  from timekit import Credentials
 
-app_token = 'YOUR_APP_TOKEN'
+api_token = 'YOUR_API_TOKEN'
 
-client = Credentials(app_token)
+client = Credentials(api_token)
 
 # get credentials for the widget
 client.widget()
@@ -161,9 +161,9 @@ client.resource('RESOURCE_ID')
 
 ```python
 from timekit import Calendar
-app_token = 'YOUR_APP_TOKEN'
+api_token = 'YOUR_API_TOKEN'
 
-client = Credentials(app_token)
+client = Credentials(api_token)
 
 # create a calendar
 resource_id = 'RESOURCE_ID'
@@ -189,7 +189,7 @@ client.delete('CALENDAR_ID')
 ```python
 from timekit import Calendar
 import datetime
-app_token = 'YOUR_APP_TOKEN'
+api_token = 'YOUR_API_TOKEN'
 
 # create an event
 now = datetime.datetime.utcnow() + datetime.timedelta(hours=5)
